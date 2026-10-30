@@ -3,412 +3,2338 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#050505" />
+<meta name="theme-color" content="#050506" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Breaking news: Updated report on a serial offense from the UK</title>
+<meta name="description" content="A private, playful birthday newspaper for Aisha. Five utterly invented charges, several compelling exhibits, and one very biased friend." />
 <meta name="robots" content="noindex,nofollow,noarchive" />
 <link rel="icon" href="data:," />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Special+Elite&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,700&family=Special+Elite&family=La+Belle+Aurore&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
-:root{--paper:#f2ebdb;--ink:#17130f;--soft:#4a4238;--red:#a82b17;--pw:420px;--ph:640px}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;overscroll-behavior:none;background:#050506;color:#fff;
-  -webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-button{font:inherit}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(circle at 50% 38%,#1c1c20,#09090b 62%,#000)}
-.bg svg{position:absolute;inset:0;width:100%;height:100%}
-.beam{transform-box:fill-box;transform-origin:50% 0;animation:sweep 10s ease-in-out infinite;opacity:.26}
-.beam.b{animation-duration:13s;animation-direction:reverse;opacity:.15}
-@keyframes sweep{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(15deg)}}
-.sky{fill:#020203;stroke:rgba(255,255,255,.07);stroke-width:1.5}
-.rain{position:absolute;inset:-20% 0 0;opacity:.35;will-change:transform;
-  background:repeating-linear-gradient(104deg,transparent 0 28px,rgba(255,255,255,.08) 29px,transparent 31px 66px);animation:rain .8s linear infinite}
-@keyframes rain{to{transform:translate3d(-30px,140px,0)}}
-.pulse{position:absolute;inset:0;opacity:var(--beat,.1);background:radial-gradient(circle at 50% 45%,rgba(255,80,20,.2),transparent 55%)}
-.vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle,transparent 40%,rgba(0,0,0,.65))}
-.spider{position:fixed;z-index:6;top:0;right:max(10px,3vw);width:clamp(64px,10vw,110px);pointer-events:none;transform-origin:50% 0;animation:swing 4.6s ease-in-out infinite}
-.spider svg{display:block;width:100%;height:auto;overflow:visible;transform-origin:50% 0;animation:drop 12s ease-in-out infinite}
-@keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
-@keyframes drop{0%,100%{transform:translateY(-90px)}45%,65%{transform:translateY(-10px)}}
-body.turning .rain,body.turning .beam,body.turning .spider,body.turning .spider svg{animation-play-state:paused}
-#intro{position:fixed;inset:0;z-index:100;background:#050505;display:flex;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s}
-#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-#static{position:absolute;inset:0;width:100%;height:100%;opacity:.15;image-rendering:pixelated}
-.ib{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;padding:24px;text-align:center;max-width:26rem;font-family:'Special Elite',monospace}
-.tag{background:var(--red);color:#fff;padding:6px 16px;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;box-shadow:0 0 15px var(--red)}
-.ih{font-size:clamp(1rem,4.5vw,1.4rem);letter-spacing:2px}
-.is{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.go{background:transparent;border:2px solid #fff;color:#fff;padding:14px 26px;min-height:48px;font-family:inherit;font-size:1rem;letter-spacing:2px;cursor:pointer}
-.go:hover,.go:focus-visible{background:#fff;color:#000;outline:none}
-.go:disabled{opacity:.6}
-#stage{position:fixed;inset:0;z-index:5;display:none;align-items:center;justify-content:center;
-  padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);padding-bottom:84px}
-#stage.on{display:flex}
-.throw{opacity:0}
-.throw.in{animation:throw 1s cubic-bezier(.2,.8,.25,1) forwards}
-@keyframes throw{0%{opacity:0;transform:translate3d(-100vw,-60vh,0) rotate(-160deg) scale(.5)}
-  55%{opacity:1;transform:rotate(4deg) scale(1.04)}80%{transform:rotate(-1.5deg)}100%{opacity:1;transform:none}}
-.book{position:relative;width:var(--pw);height:var(--ph);perspective:1900px;outline:none;filter:drop-shadow(0 16px 30px rgba(0,0,0,.7))}
-/* the top sheet folds away on its left edge, like turning a broadsheet */
-.page{position:absolute;inset:0;background:var(--paper);color:var(--ink);transform-origin:left center;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;visibility:hidden;border-radius:2px;
-  transition:transform .8s cubic-bezier(.45,.05,.2,1),visibility 0s linear .8s,box-shadow .8s;
-  font:400 clamp(13px,calc(var(--pw)*.034),17px)/1.45 'Old Standard TT',Georgia,serif;
-  padding:1.2em 1.1em 1.4em;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;touch-action:pan-y;
-  background-image:linear-gradient(90deg,rgba(60,40,10,.12),transparent 5%),linear-gradient(0deg,rgba(0,0,0,.05),transparent 5%)}
-.page::-webkit-scrollbar{display:none}
-.page.cur,.page.nxt{visibility:visible;transition-delay:0s}
-.page.turned{transform:rotateY(-108deg);box-shadow:14px 0 40px rgba(0,0,0,.55)}
-.sc{font-variant:small-caps;letter-spacing:.09em;text-transform:lowercase}
-.rule{border:0;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);height:6px;margin:.5em 0}
-.thin{border:0;border-top:1px solid var(--ink)}
-.mast{text-align:center}
-.dateline{display:flex;justify-content:space-between;gap:.5em;font-size:.7em;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.2em 0}
-.dateline span{white-space:nowrap}
-.title{font:400 2.7em/1.02 'UnifrakturMaguntia',serif;margin:.15em 0 .1em}
-.run{display:flex;justify-content:space-between;align-items:baseline;font-size:.7em;border-bottom:3px double var(--ink);padding-bottom:.3em;margin-bottom:.8em}
-.run b{font:400 1.7em/1 'UnifrakturMaguntia',serif;letter-spacing:0;text-transform:none}
-.kicker{font-size:.72em;color:var(--red);text-align:center;margin-top:.3em}
-h2.hl{font:900 1.85em/1.08 'Playfair Display',serif;text-align:center;margin:.15em 0 .25em}
-h2.hl.s{font-size:1.45em}
-.deck{font-style:italic;text-align:center;color:var(--soft);font-size:.95em;margin-bottom:.6em}
-.photo{margin:.6em 0}
-.plate{aspect-ratio:3/2;overflow:hidden;background:#d9d0bc;border:1px solid var(--ink)}
-.plate img{display:block;width:100%;height:100%;object-fit:cover;object-position:45% 40%;filter:sepia(.1) contrast(1.05) brightness(1.02)}
-.photo.missing .plate{display:none}
-.fb{display:none;padding:1.2em;text-align:center;font-size:.8em;background:#d9d0bc}
-.photo.missing .fb{display:block}
-figcaption{font-size:.74em;font-style:italic;color:var(--soft);margin-top:.35em;line-height:1.3}
-.cols{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
-.wide .cols{columns:2;column-gap:1.3em;column-rule:1px solid rgba(0,0,0,.35)}
-.cols p+p{margin-top:.5em;text-indent:1.1em}
-.cols .lede::first-letter{font:900 3.1em/.8 'Playfair Display',serif;float:left;padding:.08em .1em 0 0}
-.by{font-size:.72em;margin-bottom:.4em;color:var(--soft)}
-.item{break-inside:avoid;margin-bottom:.55em}
-.item h3{display:inline;font:700 .8em 'Old Standard TT',serif;font-variant:small-caps;letter-spacing:.1em;text-transform:lowercase;color:var(--red)}
-.item h3::after{content:" — "}
-.briefs{display:grid;grid-template-columns:1fr 1fr;gap:1em;border-top:2px solid var(--ink);margin-top:.9em;padding-top:.5em;font-size:.82em;line-height:1.35}
-.briefs div+div{border-left:1px solid var(--ink);padding-left:1em}
-.briefs h4{font:700 .85em 'Old Standard TT',serif;font-variant:small-caps;letter-spacing:.12em;text-transform:lowercase;border-bottom:1px solid var(--ink);margin-bottom:.2em}
-.pull{border-top:3px double var(--ink);border-bottom:3px double var(--ink);padding:.7em .5em;margin:.9em 0;text-align:center;font:italic 700 1.15em/1.3 'Playfair Display',serif}
-.pull cite{display:block;font:400 .6em 'Old Standard TT',serif;font-style:normal;font-variant:small-caps;letter-spacing:.1em;color:var(--soft);margin-top:.4em}
-.stamp{display:inline-block;font:.85em 'Special Elite',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--red);border:2px solid var(--red);padding:.1em .6em;transform:rotate(-3deg)}
-.dt{font:400 2em/1.05 'UnifrakturMaguntia',serif;text-align:center;margin:.3em 0 .1em}
-table.rec{width:100%;border-collapse:collapse;font-size:.88em;margin-top:.3em}
-.rec th{font:700 .8em 'Old Standard TT',serif;font-variant:small-caps;letter-spacing:.1em;text-transform:lowercase;text-align:left;padding:.3em .8em .3em 0;vertical-align:top;white-space:nowrap;color:var(--soft)}
-.rec td{padding:.3em 0;border-bottom:1px dotted rgba(0,0,0,.4)}
-ol.counts{list-style:none;margin-top:.3em}
-.counts li{padding:.45em 0 .45em .8em;border-left:3px solid var(--red);margin-bottom:.4em;font-size:.9em}
-.counts b{display:block}.counts span{color:var(--soft)}
-.sec{font:700 .8em 'Old Standard TT',serif;font-variant:small-caps;letter-spacing:.16em;text-transform:lowercase;border-bottom:1px solid var(--ink);margin:.9em 0 .2em}
-.note{border:1px dashed var(--red);background:rgba(168,43,23,.06);padding:.6em .8em;font-size:.85em;margin-top:.8em}
-.note b{display:block;font:700 .85em 'Old Standard TT',serif;font-variant:small-caps;letter-spacing:.14em;text-transform:lowercase;color:var(--red)}
-.pair{display:grid;gap:.8em}
-.wide .pair{grid-template-columns:1fr 1fr}
-.clip{display:block;width:100%;min-height:42px;margin-top:.4em;background:#e6dac4;color:var(--ink);border:1px solid #8c7a65;font:.8em 'Special Elite',monospace;cursor:pointer}
-.clip:hover{background:#d6c3a5}
-.clip:focus-visible,.mx:focus-visible{outline:3px solid #d49a69;outline-offset:2px}
-.finds{display:grid;grid-template-columns:repeat(3,1fr);gap:.6em;font-size:.78em;line-height:1.3;border-top:2px solid var(--ink);padding-top:.5em;margin-top:.6em}
-.finds b{display:block;font-variant:small-caps;letter-spacing:.1em;text-transform:lowercase;color:var(--red)}
-.memo p{text-align:justify;hyphens:auto;margin-bottom:.7em}
-.memo p:first-child::first-letter{font:900 3.1em/.8 'Playfair Display',serif;float:left;padding:.08em .1em 0 0}
-.memo .end{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:.6em .3em;font-style:italic;text-align:center}
-.sign{text-align:right;font-style:italic;color:var(--soft)}
-.judge{border:3px double var(--ink);padding:1em .8em;text-align:center;margin:.8em 0}
-.judge .w{font:400 3.6em/1 'UnifrakturMaguntia',serif;color:var(--red);transform:rotate(-2deg);margin:.1em 0}
-.judge .hb{font:900 1.2em 'Playfair Display',serif;color:#7a2a1e;margin:.6em 0 .3em;letter-spacing:.03em}
-.coupon{border:2px dashed var(--ink);padding:.9em;text-align:center}
-.coupon .a{font:400 1.6em/1.1 'UnifrakturMaguntia',serif;margin:.2em 0}
-.colo{text-align:center;font-size:.72em;color:var(--soft);border-top:1px solid var(--ink);margin-top:1em;padding-top:.5em}
-.nav{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:12;display:none;align-items:center;gap:14px;
-  background:rgba(8,8,10,.72);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:999px}
-.nav.on{display:flex}
-.nb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:none;color:#fff;font-size:1.25rem;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,opacity .2s}
-.nb:hover:not(:disabled),.nb:focus-visible:not(:disabled){background:#fff;color:#000;outline:none}
-.nb:disabled{opacity:.25;cursor:default}
-.dots{display:flex;gap:7px}
-.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:.25s}
-.dots i.on{background:#ff4a1c;transform:scale(1.3)}
-.snd{position:fixed;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));z-index:15;width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.42);background:rgba(8,8,10,.7);color:#fff;display:none;place-items:center;cursor:pointer}
-.snd.on{display:grid}
-.modal[hidden]{display:none!important}
-.modal{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px}
-.scrim{position:absolute;inset:0;background:rgba(2,2,4,.93)}
-.dlg{position:relative;width:min(94vw,960px);max-height:94dvh;background:#141111;border:1px solid #886d58;padding:clamp(9px,2vw,17px);box-shadow:0 30px 70px #000}
-.dlg header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
-.dlg h2{font:700 clamp(16px,3.8vw,23px) 'Playfair Display',serif}
-.dlg small{color:#c7a68a;letter-spacing:.16em;font:10px 'Special Elite',monospace}
-.mx{width:44px;height:44px;border:1px solid #856c5b;background:#292222;color:#fff;cursor:pointer;font-size:19px}
-.dlg video{display:block;width:100%;max-height:min(70dvh,650px);object-fit:contain;background:#020202}
-.dlg p{color:#b9a896;font:11px 'Special Elite',monospace;margin-top:10px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.2s!important}.rain{display:none}}
+:root {
+  --paper: #f3ecdd;
+  --paper-shade: #e7decb;
+  --paper-edge: #d5c9b1;
+  --ink: #161310;
+  --ink-soft: #484037;
+  --ink-rule: rgba(22, 19, 16, 0.24);
+  --red: #9b2919;
+  --red-wash: rgba(155, 41, 25, 0.06);
+  --bg: #050506;
+  --pw: 520px;
+  --ph: 640px;
+  --beat: 0.08;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--bg);
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Old Standard TT', Georgia, serif;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ============================================================
+   NOIR BACKGROUND & CLAUDE'S MOBILE-READY SPIDER
+   ============================================================ */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255, 246, 224, 0.06), transparent 34%),
+    radial-gradient(circle at 50% 44%, #1a1a1f 0%, #09090c 62%, #020203 100%);
+}
+
+.bg svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.beam {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: sweep 10s ease-in-out infinite;
+  opacity: calc(0.22 + var(--beat) * 0.24);
+}
+
+.beam.b {
+  animation-duration: 13s;
+  animation-direction: reverse;
+  opacity: calc(0.14 + var(--beat) * 0.18);
+}
+
+@keyframes sweep {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+}
+
+.sky {
+  fill: #030304;
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1.4;
+}
+
+.win {
+  fill: rgba(255, 214, 165, 0.15);
+  animation: winFlicker 4.4s steps(2, end) infinite;
+}
+.win:nth-child(odd) { animation-delay: -1.8s; }
+.win:nth-child(3n) { fill: rgba(185, 48, 26, 0.15); animation-delay: -2.7s; }
+
+@keyframes winFlicker {
+  0%, 84%, 100% { opacity: 0.28; }
+  86%, 92% { opacity: 0.06; }
+}
+
+.rain {
+  position: absolute;
+  inset: -20% 0 0;
+  opacity: 0.3;
+  will-change: transform;
+  background: repeating-linear-gradient(
+    104deg,
+    transparent 0 28px,
+    rgba(255, 255, 255, 0.07) 29px,
+    transparent 31px 66px
+  );
+  animation: rain 0.8s linear infinite;
+}
+
+@keyframes rain {
+  to { transform: translate3d(-30px, 140px, 0); }
+}
+
+.pulse {
+  position: absolute;
+  inset: 0;
+  opacity: var(--beat, 0.1);
+  background: radial-gradient(circle at 50% 45%, rgba(255, 76, 24, 0.18), transparent 55%);
+}
+
+.vig {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.72) 100%),
+    linear-gradient(to bottom, transparent 68%, rgba(0, 0, 0, 0.84) 100%);
+}
+
+/* Claude's Spider: crisp & responsive on mobile and desktop */
+.spider {
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  right: max(10px, 3vw);
+  width: clamp(64px, 10vw, 110px);
+  pointer-events: none;
+  transform-origin: 50% 0;
+  animation: swing 4.6s ease-in-out infinite;
+}
+
+.spider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-origin: 50% 0;
+  animation: drop 12s ease-in-out infinite;
+}
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes drop {
+  0%, 100% { transform: translateY(-90px); }
+  45%, 65% { transform: translateY(-10px); }
+}
+
+body.turning .rain,
+body.turning .beam,
+body.turning .spider,
+body.turning .spider svg {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   INTRO CRT TERMINAL
+   ============================================================ */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+#intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#static {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.14;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.crt-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.26) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+  background-size: 100% 4px, 6px 100%;
+}
+
+.ib {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 24px;
+  text-align: center;
+  max-width: 27rem;
+  font-family: 'Special Elite', monospace;
+}
+
+.tag {
+  background: var(--red);
+  color: #fff;
+  padding: 6px 16px;
+  font-size: 0.84rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 0 16px rgba(155, 41, 25, 0.8);
+}
+
+.ih {
+  font-size: clamp(1.05rem, 4.5vw, 1.45rem);
+  letter-spacing: 2px;
+}
+
+.is {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.5;
+}
+
+.go {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 14px 28px;
+  min-height: 48px;
+  font-family: inherit;
+  font-size: 0.96rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.go:hover,
+.go:focus-visible {
+  background: #fff;
+  color: #000;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.go:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ============================================================
+   SCROLLABLE DESK STAGE & UNBROKEN NEWSPAPER SHEET STACK
+   Guarantees ZERO text clipping on any screen height or zoom
+   ============================================================ */
+#stage {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(10px, env(safe-area-inset-right))
+    calc(76px + env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
+}
+
+#stage.on {
+  display: flex;
+  flex-direction: column;
+}
+
+#stage.shake {
+  animation: deskImpact 0.36s ease-out;
+}
+
+@keyframes deskImpact {
+  0% { transform: translate(0, 0); }
+  22% { transform: translate(-9px, 7px) rotate(-0.5deg); }
+  48% { transform: translate(7px, -5px) rotate(0.5deg); }
+  74% { transform: translate(-3px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.throw {
+  margin: auto;
+  width: var(--pw);
+  max-width: 100%;
+  opacity: 0;
+}
+
+.throw.in {
+  animation: throwIn 1s cubic-bezier(0.2, 0.82, 0.24, 1) forwards;
+}
+
+@keyframes throwIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-92vw, -50vh, 0) rotate(-140deg) scale(0.5);
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(3deg) scale(1.03);
+  }
+  80% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.book {
+  position: relative;
+  width: 100%;
+  perspective: 2200px;
+  outline: none;
+  filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.8));
+}
+
+/*
+  Broadsheet Stack Architecture:
+  - .page.cur is in relative flow so the paper expands to its full content
+    height if needed (NEVER cutting off text), while maintaining at least
+    min-height: var(--ph) for classic broadsheet proportions.
+  - Underlying sheets (.nxt, .stack-2) sit behind the active sheet with subtle
+    physical paper-stack offsets.
+  - Turning a sheet (.exit-next / .enter-prev) animates a 3D broadsheet lift,
+    curl, and sweep across the desk.
+*/
+.page {
+  width: 100%;
+  min-height: var(--ph);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(120, 92, 50, 0.05), transparent 24%),
+    radial-gradient(circle at 85% 82%, rgba(120, 92, 50, 0.06), transparent 26%),
+    linear-gradient(90deg, rgba(42, 30, 14, 0.09) 0%, transparent 3.5%, transparent 96.5%, rgba(42, 30, 14, 0.07) 100%);
+  color: var(--ink);
+  border: 1px solid rgba(22, 19, 16, 0.32);
+  border-radius: 1px;
+  font-size: clamp(12.8px, calc(var(--pw) * 0.0265), 15.2px);
+  line-height: 1.44;
+  padding: clamp(13px, 3.2%, 22px) clamp(14px, 3.6%, 24px);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  transform-origin: left center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Active top sheet on the desk */
+.page.cur {
+  position: relative;
+  display: flex;
+  z-index: 30;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+/* Next sheet peeking underneath the stack */
+.page.nxt {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+  background-color: var(--paper-shade);
+  transform: translate3d(4px, 4px, -10px) rotate(0.55deg);
+}
+
+/* Third sheet edge for physical stack depth */
+.page.stack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+  background-color: var(--paper-edge);
+  transform: translate3d(8px, 8px, -20px) rotate(1.1deg);
+}
+
+/* Forward Page Turn: top sheet lifts, curls in 3D, and sweeps left */
+.page.exit-next {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 50;
+  animation: sheetTurnNext 0.56s cubic-bezier(0.32, 0.04, 0.24, 1) forwards;
+}
+
+/* Backward Page Turn: previous sheet sweeps in from left and unfolds flat */
+.page.enter-prev {
+  position: relative;
+  display: flex;
+  z-index: 50;
+  animation: sheetTurnPrev 0.56s cubic-bezier(0.22, 0.68, 0.2, 1) forwards;
+}
+
+@keyframes sheetTurnNext {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+  }
+  38% {
+    transform: translate3d(-12%, -10px, 45px) rotateY(-28deg) rotateZ(-1.8deg);
+    box-shadow: 28px 18px 42px rgba(0, 0, 0, 0.55);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-108%, 8px, 10px) rotateY(-68deg) rotateZ(-4deg);
+    box-shadow: 40px 20px 55px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+  }
+}
+
+@keyframes sheetTurnPrev {
+  0% {
+    transform: translate3d(-105%, -8px, 30px) rotateY(-62deg) rotateZ(-3.5deg);
+    box-shadow: 36px 18px 48px rgba(0, 0, 0, 0.55);
+    opacity: 0.25;
+  }
+  60% {
+    transform: translate3d(1.5%, -3px, 12px) rotateY(-6deg) rotateZ(0.4deg);
+    box-shadow: 12px 8px 24px rgba(0, 0, 0, 0.38);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   AUTHENTIC VINTAGE BROADSHEET TYPOGRAPHY & GRID
+   ============================================================ */
+.sc {
+  font-family: 'Special Elite', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- Front Page Masthead with Classic Ear Boxes --- */
+.mast {
+  text-align: center;
+  margin-bottom: 0.45em;
+}
+
+.mast-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 0.35em;
+  padding-bottom: 0.25em;
+}
+
+.wide .mast-grid {
+  grid-template-columns: 112px 1fr 112px;
+  gap: 0.55em;
+}
+
+.ear {
+  display: none;
+  border: 1px solid var(--ink);
+  padding: 0.32em 0.4em;
+  font-size: 0.58em;
+  line-height: 1.25;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.wide .ear {
+  display: block;
+}
+
+.ear b {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.92em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink-rule);
+  padding-bottom: 0.15em;
+  margin-bottom: 0.2em;
+  color: var(--red);
+}
+
+.title {
+  font: 400 clamp(2.1em, 7.2vw, 2.75em)/0.96 'UnifrakturMaguntia', serif;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0.06em 0;
+}
+
+.dateline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4em;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.22em 0.1em;
+}
+
+.dateline.oxford {
+  border-top: 3px double var(--ink);
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  margin-top: 0.15em;
+}
+
+.dateline span {
+  white-space: nowrap;
+}
+
+/* --- Running Header (Pages 2 to 6) --- */
+.run {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5em;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-top: 2px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+  padding: 0.22em 0;
+  margin-bottom: 0.55em;
+}
+
+.run b {
+  font: 400 1.65em/1 'UnifrakturMaguntia', serif;
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* --- Banner Headlines & Decks --- */
+.banner {
+  text-align: center;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.45em;
+  margin-bottom: 0.55em;
+}
+
+.kicker {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.64em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+h2.hl {
+  font: 900 clamp(1.35em, 4.4vw, 1.78em)/1.05 'Playfair Display', Georgia, serif;
+  color: var(--ink);
+  margin: 0.12em 0 0.18em;
+  letter-spacing: -0.015em;
+}
+
+h2.hl.s {
+  font-size: clamp(1.18em, 3.8vw, 1.44em);
+}
+
+.deck {
+  font: italic 400 0.9em/1.32 'Old Standard TT', Georgia, serif;
+  color: var(--ink-soft);
+}
+
+/* --- Front Page Newspaper Grid --- */
+.front-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65em;
+  margin-bottom: 0.55em;
+}
+
+.wide .front-body {
+  grid-template-columns: 1.22fr 0.98fr;
+  gap: 0.9em;
+  align-items: start;
+}
+
+.wide .front-col-r {
+  border-left: 1px solid var(--ink-rule);
+  padding-left: 0.9em;
+}
+
+/* --- Engraved Newspaper Photo Plates --- */
+.photo {
+  margin: 0;
+  border: 1px solid var(--ink);
+  background: #faf5e8;
+  padding: 4px;
+}
+
+.plate {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #ded4c1;
+  border: 1px solid rgba(22, 19, 16, 0.35);
+}
+
+.wide .front-body .plate {
+  aspect-ratio: 4 / 3;
+}
+
+.plate img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 38%;
+  filter: contrast(1.05) saturate(0.92) sepia(0.06);
+}
+
+/* Authentic halftone newsprint screen */
+.plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+  background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0.45px, transparent 1.25px);
+  background-size: 3px 3px;
+}
+
+.photo.missing .plate {
+  display: none;
+}
+
+.fb {
+  display: none;
+  padding: 1.1em 0.8em;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7em;
+  background: #dfd5c2;
+  color: var(--ink-soft);
+}
+
+.photo.missing .fb {
+  display: block;
+}
+
+figcaption {
+  font-size: 0.72em;
+  line-height: 1.3;
+  color: var(--ink-soft);
+  margin-top: 0.35em;
+  padding-top: 0.28em;
+  border-top: 1px dotted var(--ink-rule);
+}
+
+figcaption b {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.92em;
+  color: var(--ink);
+}
+
+/* --- Byline & Body Columns --- */
+.by {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--ink-rule);
+  border-bottom: 1px solid var(--ink-rule);
+  padding: 0.26em 0;
+  margin-bottom: 0.45em;
+}
+
+.cols {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  font-size: 0.94em;
+  line-height: 1.44;
+}
+
+.cols p + p {
+  margin-top: 0.45em;
+  text-indent: 1.1em;
+}
+
+.cols .lede::first-letter {
+  font: 900 2.85em/0.8 'Playfair Display', Georgia, serif;
+  float: left;
+  padding: 0.05em 0.1em 0 0;
+  color: var(--ink);
+}
+
+/* --- Front Page Boxed Briefs --- */
+.briefs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75em;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.45em 0;
+  font-size: 0.78em;
+  line-height: 1.32;
+}
+
+.briefs > div + div {
+  border-left: 1px solid var(--ink-rule);
+  padding-left: 0.75em;
+}
+
+.briefs h4 {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.76em;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.15em;
+}
+
+.turn-bar {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62em;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: center;
+  padding-top: 0.4em;
+}
+
+/* --- Page 2: Two-Column Newspaper Dispatch --- */
+.dispatch-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55em;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  font-size: 0.92em;
+  line-height: 1.42;
+}
+
+.wide .dispatch-grid {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.15em;
+  row-gap: 0.65em;
+}
+
+.item {
+  padding-bottom: 0.45em;
+  border-bottom: 1px dotted var(--ink-rule);
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.wide .item:nth-child(5) {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--ink-rule);
+  border-bottom: 0;
+  padding-top: 0.45em;
+  padding-bottom: 0;
+}
+
+.item h3 {
+  display: inline;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.74em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.item h3::after {
+  content: ": ";
+}
+
+.pull {
+  border-top: 3px double var(--ink);
+  border-bottom: 3px double var(--ink);
+  padding: 0.6em 0.55em;
+  margin-top: 0.55em;
+  text-align: center;
+  font: italic 700 1.02em/1.32 'Playfair Display', Georgia, serif;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.pull cite {
+  display: block;
+  font: 400 0.62em/1.25 'Special Elite', monospace;
+  font-style: normal;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.35em;
+}
+
+/* --- Page 3: Court Circular / Indictment --- */
+.dossier-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.stamp {
+  display: inline-block;
+  font: 700 0.72em/1.15 'Special Elite', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: 0.2em 0.6em;
+  transform: rotate(-2deg);
+  background: rgba(155, 41, 25, 0.04);
+}
+
+.dt {
+  font: 400 clamp(1.55em, 5.2vw, 1.95em)/1.02 'UnifrakturMaguntia', serif;
+  text-align: center;
+  margin: 0.1em 0;
+}
+
+.sec {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.66em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 0.14em;
+  margin: 0.45em 0 0.25em;
+}
+
+table.rec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82em;
+}
+
+.rec th {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.2em 0.7em 0.2em 0;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+
+.rec td {
+  padding: 0.2em 0;
+  border-bottom: 1px dotted var(--ink-rule);
+}
+
+ol.counts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3em;
+}
+
+.counts li {
+  padding: 0.24em 0 0.24em 0.65em;
+  border-left: 2.5px solid var(--red);
+  font-size: 0.81em;
+  line-height: 1.3;
+}
+
+.counts b {
+  display: inline;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.88em;
+  color: var(--ink);
+}
+
+.counts span {
+  display: inline;
+  color: var(--ink-soft);
+  margin-left: 0.25em;
+}
+
+.note {
+  border: 1px dashed var(--red);
+  background: var(--red-wash);
+  padding: 0.45em 0.65em;
+  font-size: 0.79em;
+  line-height: 1.32;
+  margin-top: 0.45em;
+}
+
+.note b {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.74em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.12em;
+}
+
+/* --- Page 4: Side-by-Side Photographic Spread (Mobile & PC!) --- */
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6em;
+  margin: 0.3em 0;
+}
+
+.pair .photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pair .plate {
+  aspect-ratio: 4 / 3;
+}
+
+.pair figcaption {
+  flex: 1;
+  font-size: 0.68em;
+  line-height: 1.26;
+}
+
+.clip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 0.38em;
+  padding: 0.32em 0.4em;
+  background: var(--paper-shade);
+  color: var(--ink);
+  border: 1px solid rgba(22, 19, 16, 0.5);
+  font: 0.68em/1.15 'Special Elite', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.clip:hover,
+.clip:focus-visible {
+  background: var(--paper-edge);
+  transform: translateY(-1px);
+  outline: 2px solid var(--red);
+  outline-offset: 1px;
+}
+
+.finds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em;
+  font-size: 0.74em;
+  line-height: 1.26;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.42em 0;
+  margin: 0.45em 0;
+}
+
+.finds span + span {
+  border-left: 1px solid var(--ink-rule);
+  padding-left: 0.5em;
+}
+
+.finds b {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.82em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.1em;
+}
+
+/* --- Page 5: Personal Op-Ed / Memorandum --- */
+.memo {
+  margin-top: 0.6em;
+  font-size: 0.94em;
+  line-height: 1.5;
+}
+
+.memo p {
+  text-align: justify;
+  hyphens: auto;
+  margin-bottom: 0.6em;
+}
+
+.memo p:first-child::first-letter {
+  font: 900 2.9em/0.8 'Playfair Display', Georgia, serif;
+  float: left;
+  padding: 0.06em 0.1em 0 0;
+}
+
+.memo .end {
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.55em 0.4em;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.65em;
+}
+
+.sign {
+  text-align: right;
+  font: 400 1.65em/1.05 'La Belle Aurore', cursive;
+  color: var(--ink);
+  padding-top: 0.25em;
+}
+
+/* --- Page 6: High Court Proclamation & Cut-Out Coupon --- */
+.judge {
+  border: 3px double var(--ink);
+  padding: 0.85em 0.75em;
+  text-align: center;
+  margin: 0.2em 0 0.55em;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.judge .w {
+  font: 400 clamp(2.6em, 8.5vw, 3.4em)/0.94 'UnifrakturMaguntia', serif;
+  color: var(--red);
+  transform: rotate(-2deg);
+  margin: 0.1em 0;
+}
+
+.judge .hb {
+  font: 900 1.15em/1.15 'Playfair Display', Georgia, serif;
+  color: var(--red);
+  margin: 0.45em 0 0.25em;
+  letter-spacing: 0.04em;
+}
+
+.thin {
+  border: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.coupon {
+  position: relative;
+  border: 2px dashed var(--ink);
+  padding: 0.75em 0.7em;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.16);
+  margin-bottom: 0.55em;
+}
+
+.coupon::before {
+  content: '✂';
+  position: absolute;
+  top: -0.75em;
+  left: 12px;
+  background: var(--paper);
+  padding: 0 4px;
+  font-size: 0.9em;
+  color: var(--ink-soft);
+}
+
+.coupon .a {
+  font: 400 clamp(1.3em, 4.5vw, 1.58em)/1.1 'UnifrakturMaguntia', serif;
+  margin: 0.2em 0;
+}
+
+.colo {
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--ink);
+  padding-top: 0.5em;
+  line-height: 1.45;
+}
+
+/* ============================================================
+   NAVIGATION & SOUND CHROME
+   ============================================================ */
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 40;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10, 10, 12, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
+}
+
+.nav.on {
+  display: flex;
+}
+
+.nb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.nb:hover:not(:disabled),
+.nb:focus-visible:not(:disabled) {
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+.nb:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.dots i.on {
+  background: #d9381e;
+  transform: scale(1.28);
+}
+
+.pg-ind {
+  font: 0.66rem/1 'Special Elite', monospace;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.76);
+  min-width: 34px;
+  text-align: center;
+}
+
+.snd {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 40;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(10, 10, 12, 0.76);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  display: none;
+  place-items: center;
+  cursor: pointer;
+}
+
+.snd.on {
+  display: grid;
+}
+
+.snd:hover,
+.snd:focus-visible {
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+/* ============================================================
+   VIDEO ARCHIVE MODAL
+   ============================================================ */
+.modal[hidden] {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 3, 5, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.dlg {
+  position: relative;
+  width: min(94vw, 880px);
+  max-height: 92dvh;
+  background: #121010;
+  border: 1px solid #7c6552;
+  padding: clamp(12px, 2.2vw, 20px);
+  box-shadow: 0 28px 70px #000;
+}
+
+.dlg header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dlg h2 {
+  font: 700 clamp(1rem, 3.5vw, 1.35rem) 'Playfair Display', Georgia, serif;
+  color: #f3ecdd;
+}
+
+.dlg small {
+  display: block;
+  color: #c7a68a;
+  letter-spacing: 0.15em;
+  font: 0.65rem 'Special Elite', monospace;
+  margin-bottom: 2px;
+}
+
+.mx {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #7c6552;
+  background: #241e1e;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.mx:hover,
+.mx:focus-visible {
+  background: #f3ecdd;
+  color: #000;
+  outline: none;
+}
+
+.dlg video {
+  display: block;
+  width: 100%;
+  max-height: min(68dvh, 620px);
+  object-fit: contain;
+  background: #020202;
+}
+
+.dlg p {
+  color: #b9a896;
+  font: 0.72rem 'Special Elite', monospace;
+  margin-top: 10px;
+}
+
+@media (max-width: 420px) {
+  .dateline span:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+  }
+  .rain {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
+
+<!-- ===================== NOIR SKYLINE & RAIN ===================== -->
 <div class="bg" id="bg" aria-hidden="true">
- <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-  <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff4d6" stop-opacity=".8"/><stop offset="1" stop-color="#fff0d2" stop-opacity="0"/></linearGradient></defs>
-  <polygon class="beam" points="600,0 470,800 730,800" fill="url(#g)"/><polygon class="beam b" points="600,0 520,800 700,800" fill="url(#g)"/>
-  <path class="sky" d="M-50 800V590H20V520H95V640H155V470H230V620H300V540H360V655H430V430H525V615H585V505H650V645H710V455H785V600H850V520H915V660H990V445H1080V610H1150V530H1240V800Z"/>
- </svg>
- <div class="rain"></div><div class="pulse"></div>
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0" stop-color="#fff4d6" stop-opacity=".78" />
+        <stop offset="1" stop-color="#fff0d2" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <polygon class="beam" points="600,0 470,800 730,800" fill="url(#g)" />
+    <polygon class="beam b" points="600,0 520,800 700,800" fill="url(#g)" />
+    <path class="sky" d="M-50 800V590H20V520H95V640H155V470H230V620H300V540H360V655H430V430H525V615H585V505H650V645H710V455H785V600H850V520H915V660H990V445H1080V610H1150V530H1240V800Z" />
+    <rect class="win" x="176" y="500" width="10" height="24" />
+    <rect class="win" x="204" y="535" width="10" height="24" />
+    <rect class="win" x="456" y="465" width="12" height="26" />
+    <rect class="win" x="492" y="515" width="12" height="26" />
+    <rect class="win" x="734" y="486" width="10" height="22" />
+    <rect class="win" x="1017" y="480" width="12" height="26" />
+  </svg>
+  <div class="rain"></div>
+  <div class="pulse"></div>
 </div>
 <div class="vig" aria-hidden="true"></div>
-<div class="spider" aria-hidden="true"><svg viewBox="0 0 120 200"><line x1="60" y1="-400" x2="60" y2="88" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
- <path d="M52 100C34 92 24 82 16 68M50 106C30 104 16 98 4 88M50 114C30 116 16 122 4 134M52 120C34 128 24 138 16 152M68 100C86 92 96 82 104 68M70 106C90 104 104 98 116 88M70 114C90 116 104 122 116 134M68 120C86 128 96 138 104 152" fill="none" stroke="#050505" stroke-width="3.2" stroke-linecap="round"/>
- <g fill="#050505" stroke="rgba(255,255,255,.22)" stroke-width="1.2"><ellipse cx="60" cy="116" rx="15" ry="19"/><circle cx="60" cy="94" r="11"/></g>
- <g fill="#ff3c00"><circle cx="56" cy="92" r="2.2"/><circle cx="64" cy="92" r="2.2"/></g></svg></div>
 
-<section id="intro" aria-label="Boot screen"><canvas id="static"></canvas>
- <div class="ib"><div class="tag">Breaking News</div><div class="ih">BREAKING: THE AISHA FILE</div>
- <div class="is">Special Investigation // New Evidence // Birthday Edition</div>
- <button class="go" id="start" type="button">Read the Special Report</button></div></section>
+<!-- ===================== CLAUDE'S SPIDER ===================== -->
+<div class="spider" aria-hidden="true">
+  <svg viewBox="0 0 120 200">
+    <line x1="60" y1="-400" x2="60" y2="88" stroke="rgba(255,255,255,.3)" stroke-width="1.5" />
+    <path d="M52 100C34 92 24 82 16 68M50 106C30 104 16 98 4 88M50 114C30 116 16 122 4 134M52 120C34 128 24 138 16 152M68 100C86 92 96 82 104 68M70 106C90 104 104 98 116 88M70 114C90 116 104 122 116 134M68 120C86 128 96 138 104 152" fill="none" stroke="#050505" stroke-width="3.2" stroke-linecap="round" />
+    <g fill="#050505" stroke="rgba(255,255,255,.22)" stroke-width="1.2">
+      <ellipse cx="60" cy="116" rx="15" ry="19" />
+      <circle cx="60" cy="94" r="11" />
+    </g>
+    <g fill="#ff3c00">
+      <circle cx="56" cy="92" r="2.2" />
+      <circle cx="64" cy="92" r="2.2" />
+    </g>
+  </svg>
+</div>
 
+<!-- ===================== INTRO CRT TERMINAL ===================== -->
+<section id="intro" aria-label="Boot screen">
+  <canvas id="static"></canvas>
+  <div class="crt-lines" aria-hidden="true"></div>
+  <div class="ib">
+    <div class="tag">Breaking News</div>
+    <div class="ih">BREAKING: THE AISHA FILE</div>
+    <div class="is">Special Investigation // New Evidence // Birthday Edition</div>
+    <button class="go" id="start" type="button">Read the Special Report</button>
+  </div>
+</section>
+
+<!-- ===================== BROADSHEET STAGE ===================== -->
 <main id="stage">
- <div class="throw" id="throw"><div class="book" id="book" tabindex="0" role="application" aria-label="The Aisha Dispatch, six pages. Use arrow keys, swipe, or the buttons to turn pages.">
+  <div class="throw" id="throw">
+    <div class="book" id="book" tabindex="0" role="application" aria-label="The Aisha Dispatch, six pages. Use arrow keys, swipe, or the buttons to turn pages.">
 
-  <article class="page" aria-label="Page 1">
-   <header class="mast">
-    <div class="dateline sc"><span>Vol. I — Aisha Investigation</span><span>★ Birthday Special Report ★</span><span>Price: One Explanation</span></div>
-    <h1 class="title">The Aisha Dispatch</h1>
-    <div class="dateline sc"><span>Late City Final</span><span>Filed under: Highly Suspicious</span><span>Forecast: Questions Remain</span></div>
-   </header>
-   <div class="kicker sc">⚠ Developing Story</div>
-   <h2 class="hl">Aisha’s “Just a Video” Defence Collapses</h2>
-   <p class="deck">Two recordings. Several frames. One deeply questionable definition of “casual.”</p>
-   <figure class="photo" id="f1"><div class="plate"><img src="exhibit-a.png" width="838" height="563" alt="Aisha in warm light with auburn braids, looking toward the camera" decoding="async" fetchpriority="high"/></div>
-    <div class="fb">EXHIBIT A unavailable — check exhibit-a.png</div>
-    <figcaption>EXHIBIT A — Aisha, photographed minutes before the newsroom officially stopped believing the word “casual.”</figcaption></figure>
-   <div class="by sc">By a Concerned Friend (independence not guaranteed)</div>
-   <div class="cols"><p class="lede">Two videos. One suspicious claim: “Nothing special.” Investigators reopened the case after reviewing the footage.</p><p>Editors watched it three times. They refuse to explain the third.</p></div>
-   <div class="briefs"><div><h4>Primary Charge</h4>Misleading the public by filing a full visual event under “just a video.”</div><div><h4>Legal Notice</h4>All allegations are fictional. The birthday, however, is absolutely real.</div></div>
-   <p class="kicker sc" style="margin-top:.8em">— Turn the page · the files do not explain themselves —</p>
-  </article>
+      <!-- ==================== PAGE 1: FRONT PAGE ==================== -->
+      <article class="page" aria-label="Page 1">
+        <div>
+          <header class="mast">
+            <div class="dateline">
+              <span>Vol. I: Aisha Investigation</span>
+              <span>★ Birthday Special Report ★</span>
+              <span>Price: One Explanation</span>
+            </div>
+            <div class="mast-grid">
+              <div class="ear">
+                <b>Weather Report</b>
+                Rain over the city; indoor lighting suspiciously flattering.
+              </div>
+              <h1 class="title">The Aisha Dispatch</h1>
+              <div class="ear">
+                <b>Special Dossier</b>
+                Case No. AISHA-01 · Six Pages · Unabridged.
+              </div>
+            </div>
+            <div class="dateline oxford">
+              <span>Late City Final</span>
+              <span>Filed under: Highly Suspicious</span>
+              <span>Forecast: Questions Remain</span>
+            </div>
+          </header>
 
-  <article class="page" aria-label="Page 2">
-   <div class="run sc"><span>Page 2</span><b>The Aisha Dispatch</b><span>Investigations · cont’d</span></div>
-   <div class="cols">
-    <div class="item"><h3>Continued from front</h3>The inquiry began with a simple claim: “It’s just a video.” Investigators obtained the original files, checked the timestamps, and immediately questioned the phrase “just.”</div>
-    <div class="item"><h3>Probable cause</h3>Two recordings show different looks, different lighting and the same relaxed expression. No statement has been offered to explain why the camera appears to be cooperating so enthusiastically.</div>
-    <div class="item"><h3>Chain of custody</h3>Still frames were recovered from the footage. The newsroom was instructed to select just three. Selection took much longer than anyone is willing to admit.</div>
-    <div class="item"><h3>Conflict of interest</h3>The reporter disclosed a close friendship with Aisha. Management considered assigning someone neutral, then remembered this newspaper has no management.</div>
-    <div class="item"><h3>Expert finding</h3>The case has one constant: Aisha looks completely untroubled by how good the evidence is.</div>
-   </div>
-   <blockquote class="pull">“We requested one ordinary frame. The camera returned a portrait. We are still reviewing the paperwork.”<cite>— statement from a very tired photo editor</cite></blockquote>
-  </article>
+          <div class="banner">
+            <div class="kicker">⚠ Developing Story</div>
+            <h2 class="hl">Aisha’s “Just a Video” Defence Collapses</h2>
+            <p class="deck">Two recordings. Several frames. One deeply questionable definition of “casual.”</p>
+          </div>
 
-  <article class="page" aria-label="Page 3">
-   <div class="run sc"><span>Page 3</span><b>The Aisha Dispatch</b><span>Case No. AISHA-01</span></div>
-   <div style="display:flex;justify-content:space-between;align-items:center;gap:.6em"><span class="stamp">Indicted</span><span class="sc" style="font-size:.75em;text-align:right">Status: Evidence Overwhelming</span></div>
-   <h2 class="dt">The (Imaginary) People v. Aisha</h2>
-   <p class="deck">The following charges are entirely invented. The footage has still been admitted.</p>
-   <hr class="rule"/>
-   <h3 class="sec">Subject Record</h3>
-   <table class="rec"><tr><th>Classification</th><td>Aisha, birthday celebrant</td></tr><tr><th>Disposition</th><td>Still entirely unbothered</td></tr><tr><th>Risk</th><td>High risk of a replay request</td></tr><tr><th>Known defence</th><td>“It was just a video.”</td></tr><tr><th>Prosecution reply</th><td>That is precisely what worries us.</td></tr></table>
-   <h3 class="sec">Counts Alleged</h3>
-   <ol class="counts">
-    <li><b>Count I — Misrepresentation of Casual Footage.</b><span>Submitting a whole visual statement as if it were a routine update.</span></li>
-    <li><b>Count II — Suspiciously Effortless Presentation.</b><span>Providing little evidence of effort and far too much evidence of results.</span></li>
-    <li><b>Count III — Interference with Editorial Judgment.</b><span>Causing the photo editor to use the phrase “one more look” seven times.</span></li>
-    <li><b>Count IV — Failure to Warn the Lighting Department.</b><span>Allowing a perfectly ordinary room to take entirely undeserved credit.</span></li>
-    <li><b>Count V — Concealment of a Major Occasion.</b><span>Having a birthday and somehow expecting the newsroom not to notice.</span></li></ol>
-   <div class="note"><b>Evidentiary Note</b>No actual laws were broken. This report is satire, not a criminal record. Legal counsel is a houseplant.</div>
-  </article>
+          <div class="front-body">
+            <figure class="photo" id="f1">
+              <div class="plate">
+                <img src="exhibit-a.png" width="838" height="563" alt="Aisha in warm light with auburn braids, looking toward the camera" decoding="async" fetchpriority="high" />
+              </div>
+              <div class="fb">EXHIBIT A unavailable: check exhibit-a.png</div>
+              <figcaption><b>EXHIBIT A:</b> Aisha, photographed minutes before the newsroom officially stopped believing the word “casual.”</figcaption>
+            </figure>
 
-  <article class="page" aria-label="Page 4">
-   <div class="run sc"><span>Page 4</span><b>The Evidence Room</b><span>Exhibits B–C</span></div>
-   <div class="kicker sc">⚠ New Material Entered</div>
-   <h2 class="hl s">Two Videos Make Denial Difficult</h2>
-   <div class="pair">
-    <figure class="photo" id="f2"><div class="plate"><img src="exhibit-b.png" width="840" height="588" alt="Aisha with dark hair, looking toward the camera" decoding="async"/></div><div class="fb">EXHIBIT B unavailable — check exhibit-b.png</div>
-     <figcaption><b>EXHIBIT B.</b> A second look, a different style. The editor asked whether this was necessary. The editor answered yes.</figcaption>
-     <button type="button" class="clip" data-src="footage-01.mp4" data-cap="Exhibit D · Original recording, first look">▶ Watch clip 01 (10s)</button></figure>
-    <figure class="photo" id="f3"><div class="plate"><img src="exhibit-c.png" width="1024" height="576" alt="Aisha in a still frame from the second video, with auburn braids" decoding="async"/></div><div class="fb">EXHIBIT C unavailable — check exhibit-c.png</div>
-     <figcaption><b>EXHIBIT C.</b> A frame from the second recording. The subject remains entirely calm. The newsroom cannot relate.</figcaption>
-     <button type="button" class="clip" data-src="footage-02.mp4" data-cap="Exhibit E · Original recording, second look">▶ Watch clip 02 (15s)</button></figure>
-   </div>
-   <div class="finds"><span><b>Finding 01</b>Two looks. One Aisha.</span><span><b>Finding 02</b>No evidence of bad angles.</span><span><b>Finding 03</b>“Just a video” claim rejected.</span></div>
-   <blockquote class="pull">“The public is advised not to confuse this report with actual news. The friendship, however, is a verified fact.”<cite>— editorial disclosure</cite></blockquote>
-  </article>
+            <div class="front-col-r">
+              <div class="by">By a Concerned Friend (independence not guaranteed)</div>
+              <div class="cols">
+                <p class="lede">Two videos. One suspicious claim: “Nothing special.” Investigators reopened the case after reviewing the footage.</p>
+                <p>Editors watched it three times. They refuse to explain the third.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <article class="page" aria-label="Page 5">
-   <div class="run sc"><span>Page 5</span><b>Sentencing Memorandum</b><span>Friendship Bureau</span></div>
-   <div class="note" style="margin-top:0"><b>Official Correction</b>After a lengthy review, we admit that this investigation was never about a crime. It was about you.</div>
-   <div class="memo" style="margin-top:.9em">
-    <p>Aisha, I should probably admit something before this newspaper gets any more ridiculous: I made this because it’s your birthday, and I wanted you to have something that feels like yours.</p>
-    <p>The jokes are fun, but here is the part I mean completely: <b>I’m genuinely glad we’re friends.</b></p>
-    <p>You have a way of making even an ordinary moment memorable. And yes, you look beautiful in these videos. I just think the best thing about you cannot be caught in a still frame.</p>
-    <p>I hope this next year gives you people who show up, laughter that catches you off guard, and quiet days that turn out better than you expected. You deserve all of that, without having to do anything impressive first.</p>
-    <p class="end">Happy birthday, Aisha. Keep being yourself. The rest of us can deal with the paperwork.</p></div>
-   <p class="sign">—Mr Aura</p>
-  </article>
+        <div>
+          <div class="briefs">
+            <div>
+              <h4>Primary Charge</h4>
+              Misleading the public by filing a full visual event under “just a video.”
+            </div>
+            <div>
+              <h4>Legal Notice</h4>
+              All allegations are fictional. The birthday, however, is absolutely real.
+            </div>
+          </div>
+          <p class="turn-bar">Turn the page: the files do not explain themselves.</p>
+        </div>
+      </article>
 
-  <article class="page" aria-label="Page 6">
-   <div class="run sc"><span>Back Page</span><b>The Aisha Dispatch</b><span>Birthday Edition</span></div>
-   <div class="judge"><div class="sc" style="font-size:.8em">In the matter before this court</div><div class="w">Guilty</div>
-    <div style="font-style:italic">of pretending these were ordinary videos</div><p class="hb">HAPPY BIRTHDAY, AISHA!</p><hr class="thin" style="width:70%;margin:.6em auto"/>
-    <p><b>Sentence:</b> one full day of being celebrated, followed by a very good year. No appeal permitted.</p></div>
-   <div class="coupon"><div class="sc" style="font-size:.75em;color:var(--red)">Birthday Privileges · Non-Transferable</div><div class="a">One Lifetime Pass to Be Completely Yourself</div><div style="font-style:italic;font-size:.8em;color:var(--soft)">No expiry date. No small print. Approved by a close friend.</div></div>
-   <p style="text-align:center;margin:1em 0"><span class="stamp">Case Closed · Birthday Confirmed</span></p>
-   <div class="colo sc">The Aisha Dispatch · Birthday Special Report<br/>Prepared for Aisha · Filed by a very biased friend</div>
-  </article>
- </div></div>
- <nav class="nav" id="nav" aria-label="Page navigation"><button class="nb" id="prev" type="button" aria-label="Previous page" disabled>‹</button><span class="dots" id="dots" aria-hidden="true"></span><button class="nb" id="next" type="button" aria-label="Next page">›</button></nav>
- <button class="snd" id="snd" type="button" aria-label="Mute soundtrack" aria-pressed="false">♪</button>
+      <!-- ==================== PAGE 2: INVESTIGATIONS ==================== -->
+      <article class="page" aria-label="Page 2">
+        <div>
+          <div class="run">
+            <span>Page 2</span>
+            <b>The Aisha Dispatch</b>
+            <span>Investigations · cont’d</span>
+          </div>
+
+          <div class="dispatch-grid">
+            <div class="item">
+              <h3>Continued from front</h3>The inquiry began with a simple claim: “It’s just a video.” Investigators obtained the original files, checked the timestamps, and immediately questioned the phrase “just.”
+            </div>
+            <div class="item">
+              <h3>Probable cause</h3>Two recordings show different looks, different lighting and the same relaxed expression. No statement has been offered to explain why the camera appears to be cooperating so enthusiastically.
+            </div>
+            <div class="item">
+              <h3>Chain of custody</h3>Still frames were recovered from the footage. The newsroom was instructed to select just three. Selection took much longer than anyone is willing to admit.
+            </div>
+            <div class="item">
+              <h3>Conflict of interest</h3>The reporter disclosed a close friendship with Aisha. Management considered assigning someone neutral, then remembered this newspaper has no management.
+            </div>
+            <div class="item">
+              <h3>Expert finding</h3>The case has one constant: Aisha looks completely untroubled by how good the evidence is.
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="pull">
+          “We requested one ordinary frame. The camera returned a portrait. We are still reviewing the paperwork.”
+          <cite>Statement from a very tired photo editor</cite>
+        </blockquote>
+      </article>
+
+      <!-- ==================== PAGE 3: INDICTMENT ==================== -->
+      <article class="page" aria-label="Page 3">
+        <div>
+          <div class="run">
+            <span>Page 3</span>
+            <b>The Aisha Dispatch</b>
+            <span>Case No. AISHA-01</span>
+          </div>
+
+          <div class="dossier-bar">
+            <span class="stamp">Indicted</span>
+            <span class="sc" style="font-size:0.64em;color:var(--ink-soft)">Status: Evidence Overwhelming</span>
+          </div>
+
+          <h2 class="dt">The (Imaginary) People v. Aisha</h2>
+          <p class="deck" style="text-align:center;border-bottom:1px solid var(--ink);padding-bottom:0.35em;margin-bottom:0.4em">The following charges are entirely invented. The footage has still been admitted.</p>
+
+          <h3 class="sec">Subject Record</h3>
+          <table class="rec">
+            <tr><th>Classification</th><td>Aisha, birthday celebrant</td></tr>
+            <tr><th>Disposition</th><td>Still entirely unbothered</td></tr>
+            <tr><th>Risk</th><td>High risk of a replay request</td></tr>
+            <tr><th>Known defence</th><td>“It was just a video.”</td></tr>
+            <tr><th>Prosecution reply</th><td>That is precisely what worries us.</td></tr>
+          </table>
+
+          <h3 class="sec">Counts Alleged</h3>
+          <ol class="counts">
+            <li>
+              <b>Count I: Misrepresentation of Casual Footage.</b>
+              <span>Submitting a whole visual statement as if it were a routine update.</span>
+            </li>
+            <li>
+              <b>Count II: Suspiciously Effortless Presentation.</b>
+              <span>Providing little evidence of effort and far too much evidence of results.</span>
+            </li>
+            <li>
+              <b>Count III: Interference with Editorial Judgment.</b>
+              <span>Causing the photo editor to use the phrase “one more look” seven times.</span>
+            </li>
+            <li>
+              <b>Count IV: Failure to Warn the Lighting Department.</b>
+              <span>Allowing a perfectly ordinary room to take entirely undeserved credit.</span>
+            </li>
+            <li>
+              <b>Count V: Concealment of a Major Occasion.</b>
+              <span>Having a birthday and somehow expecting the newsroom not to notice.</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="note">
+          <b>Evidentiary Note</b>
+          No actual laws were broken. This report is satire, not a criminal record. Legal counsel is a houseplant.
+        </div>
+      </article>
+
+      <!-- ==================== PAGE 4: EVIDENCE ROOM ==================== -->
+      <article class="page" aria-label="Page 4">
+        <div>
+          <div class="run">
+            <span>Page 4</span>
+            <b>The Evidence Room</b>
+            <span>Exhibits B &amp; C</span>
+          </div>
+
+          <div class="banner" style="padding-bottom:0.35em;margin-bottom:0.45em">
+            <div class="kicker">⚠ New Material Entered</div>
+            <h2 class="hl s">Two Videos Make Denial Difficult</h2>
+          </div>
+
+          <div class="pair">
+            <figure class="photo" id="f2">
+              <div class="plate">
+                <img src="exhibit-b.png" width="840" height="588" alt="Aisha with dark hair, looking toward the camera" decoding="async" />
+              </div>
+              <div class="fb">EXHIBIT B unavailable: check exhibit-b.png</div>
+              <figcaption><b>EXHIBIT B:</b> A second look, a different style. The editor asked whether this was necessary. The editor answered yes.</figcaption>
+              <button type="button" class="clip" data-src="footage-01.mp4" data-cap="Exhibit D · Original recording, first look">▶ Watch clip 01 (10s)</button>
+            </figure>
+
+            <figure class="photo" id="f3">
+              <div class="plate">
+                <img src="exhibit-c.png" width="1024" height="576" alt="Aisha in a still frame from the second video, with auburn braids" decoding="async" />
+              </div>
+              <div class="fb">EXHIBIT C unavailable: check exhibit-c.png</div>
+              <figcaption><b>EXHIBIT C:</b> A frame from the second recording. The subject remains entirely calm. The newsroom cannot relate.</figcaption>
+              <button type="button" class="clip" data-src="footage-02.mp4" data-cap="Exhibit E · Original recording, second look">▶ Watch clip 02 (15s)</button>
+            </figure>
+          </div>
+        </div>
+
+        <div>
+          <div class="finds">
+            <span><b>Finding 01</b>Two looks. One Aisha.</span>
+            <span><b>Finding 02</b>No evidence of bad angles.</span>
+            <span><b>Finding 03</b>“Just a video” claim rejected.</span>
+          </div>
+
+          <blockquote class="pull" style="margin-top:0">
+            “The public is advised not to confuse this report with actual news. The friendship, however, is a verified fact.”
+            <cite>Editorial disclosure</cite>
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- ==================== PAGE 5: SENTENCING MEMORANDUM ==================== -->
+      <article class="page" aria-label="Page 5">
+        <div>
+          <div class="run">
+            <span>Page 5</span>
+            <b>Sentencing Memorandum</b>
+            <span>Friendship Bureau</span>
+          </div>
+
+          <div class="note" style="margin-top:0">
+            <b>Official Correction</b>
+            After a lengthy review, we admit that this investigation was never about a crime. It was about you.
+          </div>
+
+          <div class="memo">
+            <p>Aisha, I should probably admit something before this newspaper gets any more ridiculous: I made this because it’s your birthday, and I wanted you to have something that feels like yours.</p>
+            <p>The jokes are fun, but here is the part I mean completely: <b>I’m genuinely glad we’re friends.</b></p>
+            <p>You have a way of making even an ordinary moment memorable. And yes, you look beautiful in these videos. I just think the best thing about you cannot be caught in a still frame.</p>
+            <p>I hope this next year gives you people who show up, laughter that catches you off guard, and quiet days that turn out better than you expected. You deserve all of that, without having to do anything impressive first.</p>
+            <p class="end">Happy birthday, Aisha. Keep being yourself. The rest of us can deal with the paperwork.</p>
+          </div>
+        </div>
+
+        <p class="sign">Mr Aura</p>
+      </article>
+
+      <!-- ==================== PAGE 6: BACK PAGE ==================== -->
+      <article class="page" aria-label="Page 6">
+        <div>
+          <div class="run">
+            <span>Back Page</span>
+            <b>The Aisha Dispatch</b>
+            <span>Birthday Edition</span>
+          </div>
+
+          <div class="judge">
+            <div class="sc" style="font-size:0.7em;color:var(--ink-soft)">In the matter before this court</div>
+            <div class="w">Guilty</div>
+            <div style="font-style:italic;color:var(--ink-soft)">of pretending these were ordinary videos</div>
+            <p class="hb">HAPPY BIRTHDAY, AISHA!</p>
+            <hr class="thin" style="width:72%;margin:0.5em auto" />
+            <p style="font-size:0.88em"><b>Sentence:</b> one full day of being celebrated, followed by a very good year. No appeal permitted.</p>
+          </div>
+
+          <div class="coupon">
+            <div class="sc" style="font-size:0.66em;color:var(--red)">Birthday Privileges · Non-Transferable</div>
+            <div class="a">One Lifetime Pass to Be Completely Yourself</div>
+            <div style="font-style:italic;font-size:0.78em;color:var(--ink-soft)">No expiry date. No small print. Approved by a close friend.</div>
+          </div>
+        </div>
+
+        <div>
+          <p style="text-align:center;margin:0.3em 0 0.5em">
+            <span class="stamp">Case Closed · Birthday Confirmed</span>
+          </p>
+
+          <div class="colo">
+            The Aisha Dispatch · Birthday Special Report<br />
+            Prepared for Aisha · Filed by a very biased friend
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <nav class="nav" id="nav" aria-label="Page navigation">
+    <button class="nb" id="prev" type="button" aria-label="Previous page" disabled>‹</button>
+    <span class="dots" id="dots" aria-hidden="true"></span>
+    <span class="pg-ind" id="pgInd" aria-live="polite">1 / 6</span>
+    <button class="nb" id="next" type="button" aria-label="Next page">›</button>
+  </nav>
+
+  <button class="snd" id="snd" type="button" aria-label="Mute soundtrack" aria-pressed="false" title="Mute soundtrack">♪</button>
 </main>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mh" hidden><div class="scrim"></div>
- <section class="dlg"><header><div><small>EVIDENCE ARCHIVE / MOTION FILE</small><h2 id="mh">Original recording</h2></div><button class="mx" type="button" id="mx" aria-label="Close video">✕</button></header>
- <video id="vid" controls playsinline preload="none" disablepictureinpicture aria-label="Original video recording"></video><p>Original footage. Close to return to the newspaper.</p></section></div>
+<!-- ===================== VIDEO MODAL ===================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mh" hidden>
+  <div class="scrim"></div>
+  <section class="dlg">
+    <header>
+      <div>
+        <small>EVIDENCE ARCHIVE / MOTION FILE</small>
+        <h2 id="mh">Original recording</h2>
+      </div>
+      <button class="mx" type="button" id="mx" aria-label="Close video">✕</button>
+    </header>
+    <video id="vid" controls playsinline preload="none" disablepictureinpicture aria-label="Original video recording"></video>
+    <p>Original footage. Close to return to the newspaper.</p>
+  </section>
+</div>
+
 <audio id="theme" src="theme.mp3" preload="none" loop></audio>
 
 <script>
 (() => {
-'use strict';
-/* ---- pure core ---- */
-const clamp = (lo, hi, x) => Math.min(hi, Math.max(lo, x));
-const layout = (w, h) => {
-  const H = Math.max(260, h - 92), wide = w >= 760;
-  const pw = Math.floor(Math.min(w - 12, wide ? 640 : 480, Math.max(320, H * 0.78)));
-  return { wide, pw, ph: Math.floor(Math.min(H, pw * 1.5)) };
-};
-const pageClass = (k, i) => (k < i ? 'turned' : k === i ? 'cur' : k === i + 1 ? 'nxt' : 'far');
-const reduce = (s, a) => a.type === 'go' ? { ...s, i: clamp(0, s.n - 1, s.i + a.dir) } : s;
-const createStore = (s, step) => { const subs = new Set(); return {
-  get: () => s,
-  send(a) { const n = step(s, a); if (n === s) return false; const p = s; s = n; subs.forEach(f => f(n, p)); return true; },
-  on: f => subs.add(f) }; };
-const lazy = f => { let d = 0, v; return () => d ? v : (d = 1, v = f()); };
-const idle = f => ('requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 1500 }) : setTimeout(f, 200));
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-const rafThrottle = f => { let q = 0; return () => q || (q = requestAnimationFrame(() => { q = 0; f(); })); };
-const $ = id => document.getElementById(id);
+  'use strict';
 
-/* ---- view ---- */
-const pages = [...document.querySelectorAll('.page')];
-const store = createStore({ i: 0, n: pages.length }, reduce);
-const root = document.documentElement, stage = $('stage'), nav = $('nav'), prevB = $('prev'), nextB = $('next');
-const dots = pages.map(() => $('dots').appendChild(document.createElement('i')));
-let started = false, modalOpen = false, busy = false, pending = 0, turnT = 0;
+  /* ============================================================
+     1. PURE FUNCTIONAL CORE & RUST-INSPIRED PRIMITIVES
+     - Immutable data structures (Object.freeze)
+     - Algebraic Result<T, E> (Ok / Err) for zero-exception I/O
+     - Serialized Async Mutex / Actor Queue for race-free turns
+     - RAII-style TaskScope for deterministic loop cleanup
+     ============================================================ */
+  const Ok = value => Object.freeze({ ok: true, value });
+  const Err = error => Object.freeze({ ok: false, error });
+  const trySync = fn => { try { return Ok(fn()); } catch (e) { return Err(e); } };
+  const tryAsync = promise => promise.then(Ok, Err);
 
-const render = (s, p) => {
-  pages.forEach((el, k) => { el.className = 'page ' + pageClass(k, s.i); el.style.zIndex = k < s.i ? 200 + k : 100 - k; });
-  dots.forEach((d, k) => d.classList.toggle('on', k === s.i));
-  prevB.disabled = s.i === 0; nextB.disabled = s.i === s.n - 1;
-  if (p && p.i !== s.i) {
-    pages[s.i].scrollTop = 0;
-    document.body.classList.add('turning'); clearTimeout(turnT);
-    turnT = setTimeout(() => document.body.classList.remove('turning'), 900);
+  const clamp = (lo, hi, x) => Math.min(hi, Math.max(lo, x));
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+  const idle = fn => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 180));
+
+  /* Pure broadsheet geometry function */
+  const computeLayout = (w, h) => {
+    const availH = Math.max(320, h - 94);
+    const wide = w >= 680;
+    const pw = Math.floor(
+      wide
+        ? clamp(480, 620, Math.min(w - 40, availH * 0.88))
+        : clamp(296, 460, w - 20)
+    );
+    const ph = Math.floor(clamp(460, 740, Math.min(availH, pw * 1.32)));
+    return Object.freeze({ wide, pw, ph });
+  };
+
+  /* Pure state reducer */
+  const initialState = n => Object.freeze({
+    index: 0,
+    total: n,
+    started: false,
+    modalOpen: false,
+    muted: false,
+    animating: false,
+    transition: null // { from, to, dir }
+  });
+
+  const reduce = (state, msg) => {
+    switch (msg.type) {
+      case 'START':
+        return state.started ? state : Object.freeze({ ...state, started: true });
+      case 'TURN_BEGIN': {
+        if (!state.started || state.modalOpen || state.animating) return state;
+        const next = clamp(0, state.total - 1, state.index + msg.dir);
+        if (next === state.index) return state;
+        return Object.freeze({
+          ...state,
+          index: next,
+          animating: true,
+          transition: Object.freeze({ from: state.index, to: next, dir: msg.dir })
+        });
+      }
+      case 'TURN_END':
+        return Object.freeze({ ...state, animating: false, transition: null });
+      case 'MODAL_SET':
+        return Object.freeze({ ...state, modalOpen: Boolean(msg.open) });
+      case 'MUTE_TOGGLE':
+        return Object.freeze({ ...state, muted: !state.muted });
+      default:
+        return state;
+    }
+  };
+
+  /* Immutable Observable Store */
+  const createStore = init => {
+    let state = init;
+    const listeners = new Set();
+    return Object.freeze({
+      get: () => state,
+      dispatch(msg) {
+        const prev = state;
+        const next = reduce(state, msg);
+        if (next === prev) return false;
+        state = next;
+        listeners.forEach(fn => fn(state, prev));
+        return true;
+      },
+      subscribe: fn => (listeners.add(fn), () => listeners.delete(fn))
+    });
+  };
+
+  /* Rust-like Async Mutex / Bounded Channel Actor for serialized page turns */
+  const createTurnMutex = worker => {
+    let locked = false;
+    let bufferedDir = 0;
+    const drain = async dir => {
+      locked = true;
+      try {
+        await worker(dir);
+      } finally {
+        locked = false;
+        if (bufferedDir !== 0) {
+          const nextDir = bufferedDir;
+          bufferedDir = 0;
+          drain(nextDir);
+        }
+      }
+    };
+    return Object.freeze({
+      send(dir) {
+        if (locked) {
+          bufferedDir = dir;
+          return;
+        }
+        drain(dir);
+      }
+    });
+  };
+
+  /* RAII-style RAF TaskScope with automatic drop() cancellation */
+  const createRafScope = stepFn => {
+    let rafId = 0;
+    let active = false;
+    const loop = t => {
+      if (!active) return;
+      rafId = requestAnimationFrame(loop);
+      stepFn(t);
+    };
+    return Object.freeze({
+      start() {
+        if (active) return;
+        active = true;
+        rafId = requestAnimationFrame(loop);
+      },
+      drop() {
+        active = false;
+        cancelAnimationFrame(rafId);
+      }
+    });
+  };
+
+  const rafThrottle = fn => {
+    let queued = 0;
+    return () => {
+      if (queued) return;
+      queued = requestAnimationFrame(() => {
+        queued = 0;
+        fn();
+      });
+    };
+  };
+
+  /* ============================================================
+     2. WEB AUDIO SYNTHESIS ENGINE (Zero External SFX Dependencies)
+     ============================================================ */
+  const $ = id => document.getElementById(id);
+  const theme = $('theme');
+  const TARGET_VOL = 0.58;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let sharedAudioCtx = null;
+  let musicGraph = null;
+  let staticTask = null;
+
+  const acquireAudioCtx = () => {
+    if (!sharedAudioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return Err('No WebAudio');
+      const res = trySync(() => new AC());
+      if (!res.ok) return res;
+      sharedAudioCtx = res.value;
+    }
+    if (sharedAudioCtx.state === 'suspended') {
+      sharedAudioCtx.resume().catch(() => {});
+    }
+    return Ok(sharedAudioCtx);
+  };
+
+  /* Pure envelope generator for realistic broadsheet paper rustle */
+  const fillPaperImpulse = (channelData, sampleRate) => {
+    const len = channelData.length;
+    for (let i = 0; i < len; i++) {
+      const t = i / len;
+      const lift = Math.sin(Math.PI * t);
+      const flutter = 0.72 + 0.28 * Math.sin(Math.PI * 3.2 * t);
+      channelData[i] = (Math.random() * 2 - 1) * lift * flutter;
+    }
+  };
+
+  const playPaperRustle = (dir, isMuted) => {
+    if (isMuted) return;
+    const ctxRes = acquireAudioCtx();
+    if (!ctxRes.ok) return;
+    const ac = ctxRes.value;
+
+    trySync(() => {
+      const dur = 0.34;
+      const frames = Math.floor(ac.sampleRate * dur);
+      const buf = ac.createBuffer(1, frames, ac.sampleRate);
+      fillPaperImpulse(buf.getChannelData(0), ac.sampleRate);
+
+      const src = ac.createBufferSource();
+      src.buffer = buf;
+
+      const bp = ac.createBiquadFilter();
+      bp.type = 'bandpass';
+      const now = ac.currentTime;
+      bp.frequency.setValueAtTime(dir > 0 ? 920 : 1380, now);
+      bp.frequency.exponentialRampToValueAtTime(dir > 0 ? 2350 : 1720, now + dur * 0.44);
+      bp.frequency.exponentialRampToValueAtTime(840, now + dur);
+      bp.Q.value = 1.6;
+
+      const hs = ac.createBiquadFilter();
+      hs.type = 'highshelf';
+      hs.frequency.value = 3100;
+      hs.gain.value = 4.2;
+
+      const gain = ac.createGain();
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.25, now + 0.045);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+
+      src.connect(bp);
+      bp.connect(hs);
+      hs.connect(gain);
+      gain.connect(ac.destination);
+      src.start(now);
+      src.stop(now + dur + 0.02);
+    });
+  };
+
+  const playDeskSlam = isMuted => {
+    if (isMuted) return;
+    const ctxRes = acquireAudioCtx();
+    if (!ctxRes.ok) return;
+    const ac = ctxRes.value;
+
+    trySync(() => {
+      const now = ac.currentTime;
+      const osc = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(116, now);
+      osc.frequency.exponentialRampToValueAtTime(35, now + 0.19);
+      gain.gain.setValueAtTime(0.32, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.21);
+      osc.connect(gain);
+      gain.connect(ac.destination);
+      osc.start(now);
+      osc.stop(now + 0.22);
+      playPaperRustle(1, isMuted);
+    });
+  };
+
+  const startStaticHiss = isMuted => {
+    if (reduceMotion || staticTask || isMuted) return;
+    const ctxRes = acquireAudioCtx();
+    if (!ctxRes.ok) return;
+    const ac = ctxRes.value;
+
+    trySync(() => {
+      const len = Math.floor(ac.sampleRate * 1.2);
+      const buf = ac.createBuffer(1, len, ac.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * 0.42;
+
+      const src = ac.createBufferSource();
+      src.buffer = buf;
+      src.loop = true;
+
+      const hp = ac.createBiquadFilter();
+      hp.type = 'highpass';
+      hp.frequency.value = 1500;
+
+      const gain = ac.createGain();
+      gain.gain.setValueAtTime(0.001, ac.currentTime);
+      gain.gain.linearRampToValueAtTime(0.05, ac.currentTime + 0.3);
+
+      src.connect(hp);
+      hp.connect(gain);
+      gain.connect(ac.destination);
+      src.start();
+      staticTask = { src, gain, ac };
+    });
+  };
+
+  const dropStaticHiss = () => {
+    if (!staticTask) return;
+    const { src, gain, ac } = staticTask;
+    staticTask = null;
+    trySync(() => {
+      const now = ac.currentTime;
+      gain.gain.cancelScheduledValues(now);
+      gain.gain.setValueAtTime(gain.gain.value, now);
+      gain.gain.linearRampToValueAtTime(0.0001, now + 0.3);
+      src.stop(now + 0.35);
+    });
+  };
+
+  const ensureMusicGraph = () => {
+    if (musicGraph) return Ok(musicGraph);
+    const ctxRes = acquireAudioCtx();
+    if (!ctxRes.ok) return ctxRes;
+    const ac = ctxRes.value;
+    return trySync(() => {
+      const src = ac.createMediaElementSource(theme);
+      const gain = ac.createGain();
+      const an = ac.createAnalyser();
+      gain.gain.value = 0;
+      an.fftSize = 64;
+      an.smoothingTimeConstant = 0.82;
+      src.connect(an);
+      an.connect(gain);
+      gain.connect(ac.destination);
+      musicGraph = Object.freeze({ ac, gain, an, data: new Uint8Array(an.frequencyBinCount) });
+      return musicGraph;
+    });
+  };
+
+  const rampMusic = (level, sec) => {
+    const gRes = ensureMusicGraph();
+    if (!gRes.ok) {
+      trySync(() => { theme.volume = clamp(0, 1, level); });
+      return;
+    }
+    const { ac, gain } = gRes.value;
+    const now = ac.currentTime;
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(gain.gain.value, now);
+    gain.gain.linearRampToValueAtTime(clamp(0, 1, level), now + sec);
+  };
+
+  let lastBeatTick = 0;
+  const beatScope = createRafScope(t => {
+    if (t - lastBeatTick < 34) return;
+    lastBeatTick = t;
+    const gRes = ensureMusicGraph();
+    if (!gRes.ok) return;
+    const { an, data } = gRes.value;
+    an.getByteFrequencyData(data);
+    let sum = 0;
+    for (let i = 0; i < 8; i++) sum += data[i];
+    const beat = clamp(0.06, 1, Math.pow(sum / 2040, 1.35)).toFixed(2);
+    $('bg').style.setProperty('--beat', beat);
+  });
+
+  /* ============================================================
+     3. IMPERATIVE SHELL: VIEW BINDINGS & CONCURRENT CONTROLLERS
+     ============================================================ */
+  const pages = [...document.querySelectorAll('.page')];
+  const store = createStore(initialState(pages.length));
+  const root = document.documentElement;
+  const stage = $('stage');
+  const book = $('book');
+  const nav = $('nav');
+  const prevB = $('prev');
+  const nextB = $('next');
+  const pgInd = $('pgInd');
+  const sndB = $('snd');
+  const dots = pages.map(() => $('dots').appendChild(document.createElement('i')));
+
+  /* Pure class derivation for stack depth and active transition */
+  const derivePageClass = (k, state) => {
+    const { index, transition } = state;
+    if (transition) {
+      if (transition.dir > 0) {
+        if (k === transition.from) return 'page exit-next';
+        if (k === transition.to) return 'page cur';
+        if (k === transition.to + 1) return 'page nxt';
+      } else {
+        if (k === transition.to) return 'page enter-prev';
+        if (k === transition.from) return 'page nxt';
+        if (k === transition.from + 1) return 'page stack';
+      }
+      return 'page';
+    }
+    if (k === index) return 'page cur';
+    if (k === index + 1) return 'page nxt';
+    if (k === index + 2) return 'page stack';
+    return 'page';
+  };
+
+  const renderView = state => {
+    pages.forEach((el, k) => {
+      el.className = derivePageClass(k, state);
+    });
+    dots.forEach((d, k) => d.classList.toggle('on', k === state.index));
+    pgInd.textContent = `${state.index + 1} / ${state.total}`;
+    prevB.disabled = state.index === 0;
+    nextB.disabled = state.index === state.total - 1;
+    document.body.classList.toggle('turning', state.animating);
+  };
+
+  store.subscribe(renderView);
+
+  /* Serialized Turn Actor: guarantees every turn animation finishes cleanly */
+  const turnActor = createTurnMutex(async dir => {
+    const moved = store.dispatch({ type: 'TURN_BEGIN', dir });
+    if (!moved) return;
+    playPaperRustle(dir, store.get().muted);
+    stage.scrollTo({ top: 0, behavior: 'smooth' });
+    await sleep(560);
+    store.dispatch({ type: 'TURN_END' });
+  });
+
+  const fitLayout = rafThrottle(() => {
+    const vv = window.visualViewport;
+    const w = vv ? vv.width : window.innerWidth;
+    const h = vv ? vv.height : window.innerHeight;
+    const L = computeLayout(w, h);
+    root.style.setProperty('--pw', `${L.pw}px`);
+    root.style.setProperty('--ph', `${L.ph}px`);
+    root.classList.toggle('wide', L.wide);
+  });
+
+  /* ---- Image Fallbacks & Idle Pre-Decoding ---- */
+  const imgs = [...document.querySelectorAll('.photo img')];
+  imgs.forEach(img => {
+    const fig = img.closest('.photo');
+    img.addEventListener('error', () => fig.classList.add('missing'));
+    if (img.complete && img.naturalWidth === 0) fig.classList.add('missing');
+  });
+
+  const warmDecodeImages = async () => {
+    for (const img of imgs) {
+      await new Promise(idle);
+      if (img.decode) await tryAsync(img.decode());
+    }
+  };
+
+  /* ---- Video Evidence Modal Controller ---- */
+  const modal = $('modal');
+  const vid = $('vid');
+  let focusReturnEl = null;
+  let resumeMusicAfterModal = false;
+
+  const openClip = btn => {
+    const st = store.get();
+    if (st.modalOpen) return;
+    store.dispatch({ type: 'MODAL_SET', open: true });
+    focusReturnEl = btn;
+    resumeMusicAfterModal = !theme.paused && !st.muted;
+    if (resumeMusicAfterModal) {
+      rampMusic(0, 0.22);
+      setTimeout(() => store.get().modalOpen && theme.pause(), 250);
+    }
+    vid.src = btn.dataset.src;
+    $('mh').textContent = btn.dataset.cap;
+    modal.hidden = false;
+    $('mx').focus({ preventScroll: true });
+    if (vid.play) tryAsync(vid.play());
+  };
+
+  const closeClip = () => {
+    if (!store.get().modalOpen) return;
+    store.dispatch({ type: 'MODAL_SET', open: false });
+    vid.pause();
+    vid.removeAttribute('src');
+    vid.load();
+    modal.hidden = true;
+    if (resumeMusicAfterModal && !store.get().muted) {
+      tryAsync(theme.play()).then(res => res.ok && rampMusic(TARGET_VOL, 0.55));
+    }
+    if (focusReturnEl) focusReturnEl.focus({ preventScroll: true });
+  };
+
+  document.querySelectorAll('.clip').forEach(btn =>
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openClip(btn);
+    })
+  );
+  $('mx').addEventListener('click', closeClip);
+  modal.querySelector('.scrim').addEventListener('click', closeClip);
+
+  /* ---- Sound Toggle ---- */
+  sndB.addEventListener('click', e => {
+    e.stopPropagation();
+    store.dispatch({ type: 'MUTE_TOGGLE' });
+    const { muted } = store.get();
+    rampMusic(muted ? 0 : TARGET_VOL, 0.2);
+    sndB.setAttribute('aria-pressed', String(muted));
+    sndB.setAttribute('aria-label', muted ? 'Unmute soundtrack' : 'Mute soundtrack');
+    sndB.title = muted ? 'Unmute soundtrack' : 'Mute soundtrack';
+    sndB.textContent = muted ? '×' : '♪';
+    if (muted) {
+      beatScope.drop();
+      $('bg').style.setProperty('--beat', '0.08');
+    } else if (!reduceMotion) {
+      beatScope.start();
+    }
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    const st = store.get();
+    if (document.hidden) beatScope.drop();
+    else if (st.started && !st.muted && !st.modalOpen && !reduceMotion) beatScope.start();
+  });
+
+  /* ---- Input & Gesture Handlers ---- */
+  prevB.addEventListener('click', () => turnActor.send(-1));
+  nextB.addEventListener('click', () => turnActor.send(1));
+
+  document.addEventListener('keydown', e => {
+    if (store.get().modalOpen) {
+      if (e.key === 'Escape') closeClip();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      e.preventDefault();
+      turnActor.send(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      turnActor.send(-1);
+    }
+  });
+
+  let suppressClickUntil = 0;
+  book.addEventListener('click', e => {
+    if (store.get().modalOpen || e.target.closest('button') || Date.now() < suppressClickUntil) return;
+    const rect = book.getBoundingClientRect();
+    const relX = e.clientX - rect.left;
+    if (relX < rect.width * 0.22) turnActor.send(-1);
+    else if (relX > rect.width * 0.78) turnActor.send(1);
+  });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchActive = false;
+
+  book.addEventListener('touchstart', e => {
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchActive = true;
+  }, { passive: true });
+
+  book.addEventListener('touchend', e => {
+    if (!touchActive) return;
+    touchActive = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.hypot(dx, dy) > 10) suppressClickUntil = Date.now() + 400;
+    if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+      turnActor.send(dx < 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  /* ---- Intro CRT Static & Launch Sequence ---- */
+  const cv = $('static');
+  const cx = cv.getContext('2d', { alpha: false });
+  let lastNoiseTick = 0;
+
+  const sizeStaticCanvas = () => {
+    cv.width = clamp(120, 460, window.innerWidth >> 2);
+    cv.height = clamp(90, 340, window.innerHeight >> 2);
+  };
+
+  const noiseScope = createRafScope(t => {
+    if (t - lastNoiseTick < 42) return;
+    lastNoiseTick = t;
+    const im = cx.createImageData(cv.width, cv.height);
+    const px = new Uint32Array(im.data.buffer);
+    for (let i = 0; i < px.length; i++) {
+      const v = Math.random() > 0.52 ? 0x4f : 0x10;
+      px[i] = 0xff000000 | (v << 16) | (v << 8) | v;
+    }
+    cx.putImageData(im, 0, 0);
+  });
+
+  ['pointerdown', 'touchstart', 'keydown'].forEach(evt =>
+    $('intro').addEventListener(evt, () => startStaticHiss(store.get().muted), { once: true, passive: true })
+  );
+
+  $('start').addEventListener('click', async () => {
+    if (store.get().started) return;
+    store.dispatch({ type: 'START' });
+    $('start').disabled = true;
+
+    startStaticHiss(store.get().muted);
+    ensureMusicGraph();
+    await tryAsync(theme.play());
+    rampMusic(store.get().muted ? 0 : TARGET_VOL, 1.15);
+    if (!reduceMotion && !store.get().muted) beatScope.start();
+
+    await sleep(440);
+    dropStaticHiss();
+
+    $('intro').classList.add('hide');
+    stage.classList.add('on');
+    fitLayout();
+    renderView(store.get());
+
+    await nextFrame();
+    $('throw').classList.add('in');
+
+    setTimeout(() => {
+      playDeskSlam(store.get().muted);
+      if (!reduceMotion) {
+        stage.classList.add('shake');
+        setTimeout(() => stage.classList.remove('shake'), 380);
+      }
+    }, 520);
+
+    setTimeout(() => {
+      noiseScope.drop();
+      $('intro').style.display = 'none';
+    }, 740);
+
+    setTimeout(() => {
+      nav.classList.add('on');
+      sndB.classList.add('on');
+      book.focus({ preventScroll: true });
+    }, 1020);
+
+    warmDecodeImages();
+  });
+
+  window.addEventListener('resize', () => { fitLayout(); sizeStaticCanvas(); }, { passive: true });
+  window.addEventListener('orientationchange', () => setTimeout(fitLayout, 160), { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitLayout, { passive: true });
   }
-};
-store.on(render);
-const fit = rafThrottle(() => {
-  const v = window.visualViewport, w = v ? v.width : innerWidth, h = v ? v.height : innerHeight, L = layout(w, h);
-  root.style.setProperty('--pw', L.pw + 'px'); root.style.setProperty('--ph', L.ph + 'px');
-  root.classList.toggle('wide', L.wide);
-});
-const go = dir => {
-  if (!started || modalOpen) return;
-  if (busy) { pending = dir; return; }
-  if (!store.send({ type: 'go', dir })) return;
-  busy = true;
-  setTimeout(() => { busy = false; if (pending) { const d = pending; pending = 0; go(d); } }, 450);
-};
 
-/* ---- audio ---- */
-const theme = $('theme'), sndB = $('snd'), TARGET = 0.58;
-let muted = false, beatRaf = 0;
-const graph = lazy(() => {
-  const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
-  try {
-    const ac = new AC(), src = ac.createMediaElementSource(theme), gain = ac.createGain(), an = ac.createAnalyser();
-    gain.gain.value = 0; an.fftSize = 64; an.smoothingTimeConstant = .8;
-    src.connect(an); an.connect(gain); gain.connect(ac.destination);
-    return { ac, gain, an, data: new Uint8Array(an.frequencyBinCount) };
-  } catch { return null; }
-});
-const ramp = (lvl, sec) => {
-  const g = graph(); if (!g) { try { theme.volume = clamp(0, 1, lvl); } catch {} return; }
-  const t = g.ac.currentTime, p = g.gain.gain;
-  p.cancelScheduledValues(t); p.setValueAtTime(p.value, t); p.linearRampToValueAtTime(clamp(0, 1, lvl), t + sec);
-};
-const beat = () => {
-  cancelAnimationFrame(beatRaf); const g = graph(); if (!g) return; let last = 0;
-  const tick = t => { beatRaf = requestAnimationFrame(tick); if (t - last < 33) return; last = t;
-    g.an.getByteFrequencyData(g.data); let s = 0; for (let i = 0; i < 8; i++) s += g.data[i];
-    $('bg').style.setProperty('--beat', clamp(.06, 1, Math.pow(s / 2040, 1.35)).toFixed(2)); };
-  beatRaf = requestAnimationFrame(tick);
-};
-const startMusic = async () => {
-  const g = graph();
-  try { if (g && g.ac.state === 'suspended') await g.ac.resume(); await theme.play(); ramp(muted ? 0 : TARGET, 1.2); beat(); } catch {}
-};
-sndB.addEventListener('click', e => {
-  e.stopPropagation(); muted = !muted; ramp(muted ? 0 : TARGET, .2);
-  sndB.setAttribute('aria-pressed', String(muted)); sndB.setAttribute('aria-label', muted ? 'Unmute soundtrack' : 'Mute soundtrack');
-  sndB.textContent = muted ? '×' : '♪'; muted ? cancelAnimationFrame(beatRaf) : beat();
-});
-document.addEventListener('visibilitychange', () => document.hidden ? cancelAnimationFrame(beatRaf) : (started && !muted && !modalOpen && beat()));
-
-/* ---- lazy images ---- */
-const imgs = [...document.querySelectorAll('.photo img')];
-imgs.forEach(img => { const f = img.closest('.photo'); img.addEventListener('error', () => f.classList.add('missing')); });
-const warm = async () => { for (const img of imgs) { await new Promise(idle); try { await img.decode(); } catch {} } };
-
-/* ---- video modal ---- */
-const modal = $('modal'), vid = $('vid'); let ret = null, resume = false;
-const openClip = b => {
-  if (modalOpen) return; modalOpen = true; ret = b; resume = !theme.paused && !muted;
-  if (resume) { ramp(0, .25); setTimeout(() => modalOpen && theme.pause(), 300); }
-  vid.src = b.dataset.src; $('mh').textContent = b.dataset.cap; modal.hidden = false; $('mx').focus({ preventScroll: true }); vid.play().catch(() => {});
-};
-const closeClip = () => {
-  if (!modalOpen) return; modalOpen = false; vid.pause(); vid.removeAttribute('src'); vid.load(); modal.hidden = true;
-  if (resume) theme.play().then(() => ramp(TARGET, .6)).catch(() => {});
-  ret && ret.focus({ preventScroll: true });
-};
-document.querySelectorAll('.clip').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openClip(b); }));
-$('mx').addEventListener('click', closeClip); modal.querySelector('.scrim').addEventListener('click', closeClip);
-
-/* ---- input ---- */
-prevB.addEventListener('click', () => go(-1)); nextB.addEventListener('click', () => go(1));
-document.addEventListener('keydown', e => {
-  if (modalOpen) { if (e.key === 'Escape') closeClip(); return; }
-  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(1); }
-  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
-});
-const book = $('book');
-book.addEventListener('click', e => { if (!root.classList.contains('wide') || e.target.closest('button')) return;
-  const r = book.getBoundingClientRect(); go(e.clientX > r.left + r.width / 2 ? 1 : -1); });
-let sx = 0, sy = 0, on = false;
-book.addEventListener('touchstart', e => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; on = true; }, { passive: true });
-book.addEventListener('touchend', e => { if (!on) return; on = false; const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
-  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) go(dx < 0 ? 1 : -1); }, { passive: true });
-
-/* ---- intro + entry ---- */
-const cv = $('static'), cx = cv.getContext('2d', { alpha: false }); let intro = true, nr = 0;
-const size = () => { cv.width = clamp(120, 480, innerWidth >> 2); cv.height = clamp(90, 360, innerHeight >> 2); };
-const noise = () => { let last = 0; const tick = t => { if (!intro) return; nr = requestAnimationFrame(tick); if (t - last < 42) return; last = t;
-  const im = cx.createImageData(cv.width, cv.height), px = new Uint32Array(im.data.buffer);
-  for (let i = 0; i < px.length; i++) { const v = Math.random() > .52 ? 0x4f : 0x10; px[i] = 0xff000000 | v << 16 | v << 8 | v; } cx.putImageData(im, 0, 0); };
-  nr = requestAnimationFrame(tick); };
-$('start').addEventListener('click', async () => {
-  if (started) return; started = true; $('start').disabled = true; startMusic(); await sleep(500);
-  $('intro').classList.add('hide'); stage.classList.add('on'); fit(); render(store.get());
-  await new Promise(r => requestAnimationFrame(r)); $('throw').classList.add('in');
-  setTimeout(() => { intro = false; cancelAnimationFrame(nr); $('intro').style.display = 'none'; }, 750);
-  setTimeout(() => { nav.classList.add('on'); sndB.classList.add('on'); book.focus({ preventScroll: true }); }, 1150);
-  warm();
-});
-addEventListener('resize', fit, { passive: true }); addEventListener('resize', size, { passive: true });
-addEventListener('orientationchange', () => setTimeout(fit, 180), { passive: true });
-if (window.visualViewport) visualViewport.addEventListener('resize', fit, { passive: true });
-size(); fit(); render(store.get()); noise();
+  sizeStaticCanvas();
+  fitLayout();
+  renderView(store.get());
+  noiseScope.start();
 })();
 </script>
 </body>
